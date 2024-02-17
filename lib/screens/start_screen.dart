@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
@@ -8,9 +9,8 @@ import 'package:provider/provider.dart';
 
 import '../Provider/App_Image_provider.dart';
 
-
 class StartScreen extends StatefulWidget {
-  const StartScreen({super.key});
+  StartScreen({super.key});
 
   @override
   State<StartScreen> createState() => _StartScreenState();
@@ -20,7 +20,7 @@ class _StartScreenState extends State<StartScreen> {
   late AppImageProvider appimageProvider;
   @override
   void initState() {
-     appimageProvider = Provider.of<AppImageProvider>(context,listen:false);
+    appimageProvider = Provider.of<AppImageProvider>(context, listen: false);
 
     super.initState();
   }
@@ -33,22 +33,23 @@ class _StartScreenState extends State<StartScreen> {
           SizedBox(
             width: double.infinity,
             child: Image.asset(
-              "assets/images/flowerwallpaper.jpg",
+              "assets/images/landing.jpeg",
               fit: BoxFit.cover,
             ),
           ),
           Column(
             children: [
-              const Expanded(
+              Expanded(
                   child: Center(
                 child: Text(
                   "Luminarc",
-                  style: TextStyle(
-                      color: Colors.orange,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 5,
-                      wordSpacing: 10),
+                  style: GoogleFonts.roboto(
+                      textStyle: TextStyle(
+                          color: Colors.orange,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 4,
+                          wordSpacing: 10)),
                 ),
               )),
               Expanded(child: Container()),
@@ -59,23 +60,37 @@ class _StartScreenState extends State<StartScreen> {
                   children: [
                     ElevatedButton(
                         onPressed: () {
-                          AppImagePicker().pick(source:ImageSource.gallery, onPick: (File? image) {
-                            // imageProvider.changeImage(image);
-                            appimageProvider.changeImage(image!);
-                            Navigator.of(context).pushReplacementNamed(AppRoutes.home);
-
-                            
-                          },);
-                        }, child: const Text("Gallery")),
+                          AppImagePicker().pick(
+                            source: ImageSource.gallery,
+                            onPick: (File? image) {
+                              // imageProvider.changeImage(image);
+                              if (image != null) {
+                                appimageProvider.changeImage(image!);
+                                Navigator.of(context)
+                                    .pushReplacementNamed(AppRoutes.home);
+                              } else {
+                                print("image not picked");
+                              }
+                            },
+                          );
+                        },
+                        child: Text("Gallery")),
                     ElevatedButton(
                         onPressed: () {
-                          AppImagePicker().pick(source:ImageSource.gallery, onPick: (File? image) {
-                            // imageProvider.changeImage(image);
-                            appimageProvider.changeImage(image!);
-                            Navigator.of(context).pushReplacementNamed(AppRoutes.home);
-
-                          },);
-                        }, child: const Text("Camera")),
+                          AppImagePicker().pick(
+                            source: ImageSource.camera,
+                            onPick: (File? image) {
+                              if (image != Null) {
+                                appimageProvider.changeImage(image!);
+                                Navigator.of(context)
+                                    .pushReplacementNamed(AppRoutes.home);
+                              } else {
+                                print("image not picked");
+                              }
+                            },
+                          );
+                        },
+                        child: Text("Camera")),
                   ],
                 ),
               ))

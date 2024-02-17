@@ -10,10 +10,8 @@ import 'routes/Routes.dart';
 
 void main() {
   runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider(create: (_)=>AppImageProvider() )
-    ],
-    child: const MyApp()));
+      providers: [ChangeNotifierProvider(create: (_) => AppImageProvider())],
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -22,7 +20,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    print("test");
     return MaterialApp(
       title: 'Luminarc',
       theme: ThemeData(
@@ -30,11 +27,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       initialRoute: AppRoutes.home,
-       routes: {
-        AppRoutes.home: (context) => const HomePage(),
-        AppRoutes.startScreen: (context) => const StartScreen(),
+      routes: {
+        AppRoutes.home: (context) => HomePage(),
+        AppRoutes.startScreen: (context) => StartScreen(),
       },
     );
   }
 }
-
