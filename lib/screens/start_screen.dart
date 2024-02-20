@@ -7,7 +7,7 @@ import 'package:luminarc/helper/app_Image_picker.dart';
 import 'package:luminarc/routes/Routes.dart';
 import 'package:provider/provider.dart';
 
-import '../Provider/App_Image_provider.dart';
+import '../Provider/app_image_provider.dart';
 
 class StartScreen extends StatefulWidget {
   StartScreen({super.key});
@@ -65,7 +65,7 @@ class _StartScreenState extends State<StartScreen> {
                             onPick: (File? image) {
                               // imageProvider.changeImage(image);
                               if (image != null) {
-                                appimageProvider.changeImage(image!);
+                                appimageProvider.changeImageFile(image);
                                 Navigator.of(context)
                                     .pushReplacementNamed(AppRoutes.home);
                               } else {
@@ -81,7 +81,7 @@ class _StartScreenState extends State<StartScreen> {
                             source: ImageSource.camera,
                             onPick: (File? image) {
                               if (image != Null) {
-                                appimageProvider.changeImage(image!);
+                                appimageProvider.changeImageFile(image!);
                                 Navigator.of(context)
                                     .pushReplacementNamed(AppRoutes.home);
                               } else {
