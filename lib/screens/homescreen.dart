@@ -46,7 +46,13 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               children: [
                 // Text('dsa',style: TextStyle(color: Colors.white),)
-                _bottomBarItem(Icons.crop_rotate, 'crop', onPress: () {})
+                _bottomBarItem(Icons.crop_rotate, 'crop', onPress: () {
+                  Navigator.of(context).pushNamed(AppRoutes.crop);
+                }),
+                _bottomBarItem(Icons.filter_frames_outlined, 'Filters', onPress: () {
+                  Navigator.of(context).pushNamed('c/rop');
+
+                })
               ],
             ),
           ),

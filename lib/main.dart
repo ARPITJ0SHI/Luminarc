@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:luminarc/Provider/App_Image_provider.dart';
+import 'package:luminarc/screens/filter_screen.dart';
 
 import 'package:luminarc/screens/homescreen.dart';
 import 'package:luminarc/screens/start_screen.dart';
@@ -7,6 +8,7 @@ import 'package:luminarc/screens/start_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'routes/Routes.dart';
+import 'screens/crop_screen.dart';
 
 void main() {
   runApp(MultiProvider(
@@ -30,6 +32,8 @@ class MyApp extends StatelessWidget {
       routes: {
         AppRoutes.home: (context) => HomePage(),
         AppRoutes.startScreen: (context) => StartScreen(),
+        AppRoutes.crop: (context) => CropScreen(),
+        // AppRoutes.filters: (context) => FilterScreen(),
       },
     );
   }
