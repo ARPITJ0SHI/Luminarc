@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:luminarc/Provider/App_Image_provider.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:luminarc/helper/cons.dart';
+
 import 'package:luminarc/routes/routes.dart';
+import 'package:luminarc/screens/crop_screen.dart';
+import 'package:luminarc/screens/start_screen.dart';
 import 'package:provider/provider.dart';
+
+import '../Provider/imageProvider.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -16,16 +22,31 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.black,
-          title: Text("Luminar"),
+          backgroundColor: Constants.appBarColor,
+          title: Text(
+            "Luminarc",
+            style:
+                GoogleFonts.poppins(textStyle: TextStyle(color: Colors.white)),
+          ),
           centerTitle: true,
           leading: CloseButton(
             onPressed: () {
-              Navigator.of(context).pushReplacementNamed(AppRoutes.home);
+              Navigator.of(context).pushReplacementNamed(AppRoutes.startScreen);
             },
           ),
-          actions: [TextButton(onPressed: () {}, child: Text('save'))]),
-      backgroundColor: Colors.black,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: TextButton(
+                  onPressed: () {},
+                  child: Text('save',
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                              color: Constants.primaryTextColor,
+                              fontWeight: FontWeight.w700)))),
+            )
+          ]),
+      backgroundColor: Colors.black87,
       body: Center(
         child: Consumer<AppImageProvider>(
           builder: (BuildContext context, value, child) {
@@ -45,8 +66,9 @@ class _HomePageState extends State<HomePage> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                // Text('dsa',style: TextStyle(color: Colors.white),)
-                _bottomBarItem(Icons.crop_rotate, 'crop', onPress: () {})
+                _bottomBarItem(Icons.crop_rotate, 'crop', onPress: () {
+                  Navigator.pushNamed(context, AppRoutes.crop);
+                }),
               ],
             ),
           ),
@@ -60,17 +82,20 @@ Widget _bottomBarItem(IconData icon, String title, {required onPress}) {
   return InkWell(
     onTap: onPress,
     child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon),
+          Icon(
+            icon,
+            color: Constants.primaryTextColor,
+          ),
           const SizedBox(
             height: 3,
           ),
           Text(
             title,
-            style: const TextStyle(color: Colors.white),
+            style: TextStyle(color: Constants.primaryTextColor),
           )
         ],
       ),

@@ -1,16 +1,24 @@
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
+typedef ImagePickCallback = void Function(File? image);
+
 class AppImagePicker {
-  pick({required ImageSource source, required Function(File?) onPick}) async {
+  Future<void> pick(
+      {required ImageSource source, required ImagePickCallback onPick}) async {
     final picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: source);
-    if (image != null) {
-      onPick(File(image.path));
-      print("${image.path} file picked successfully");
-    } else {
-      onPick(null);
-      print("file not picked ");
+
+    try {
+      final XFile? pickedFile = await picker.pickImage(source: source);
+      if (pickedFile != null) {
+        onPick(File(pickedFile.path));
+        print("$pickedFile picked successfully");
+      } else {
+        onPick(null);
+        print('null image');
+      }
+    } catch (e) {
+      print("image pick failed $e");
     }
   }
 }

@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:luminarc/Provider/App_Image_provider.dart';
+import 'package:luminarc/Provider/imageProvider.dart';
+import 'package:luminarc/routes/Routes.dart';
+
+import 'package:luminarc/screens/crop_screen.dart';
 
 import 'package:luminarc/screens/homescreen.dart';
 import 'package:luminarc/screens/start_screen.dart';
 
 import 'package:provider/provider.dart';
 
-import 'routes/Routes.dart';
 
 void main() {
-  runApp(MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => AppImageProvider())],
-      child: const MyApp()));
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (context) => AppImageProvider())
+  ], child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -26,10 +26,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: AppRoutes.home,
+      initialRoute: AppRoutes.startScreen,
       routes: {
         AppRoutes.home: (context) => HomePage(),
         AppRoutes.startScreen: (context) => StartScreen(),
+        AppRoutes.crop: (context)=> CropScreen()
       },
     );
   }
