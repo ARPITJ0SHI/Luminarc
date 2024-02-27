@@ -3,6 +3,7 @@ import 'package:luminarc/Provider/imageProvider.dart';
 import 'package:luminarc/routes/Routes.dart';
 
 import 'package:luminarc/screens/crop_screen.dart';
+import 'package:luminarc/screens/filter_screen.dart';
 
 import 'package:luminarc/screens/homescreen.dart';
 import 'package:luminarc/screens/start_screen.dart';
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
       routes: {
         AppRoutes.home: (context) => HomePage(),
         AppRoutes.startScreen: (context) => StartScreen(),
-        AppRoutes.crop: (context)=> CropScreen()
+        AppRoutes.crop: (context)=> CropScreen(),
+        AppRoutes.filters: (context)=> FilterScreen()
       },
     );
   }

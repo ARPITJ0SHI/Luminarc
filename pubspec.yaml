@@ -40,6 +40,7 @@ dependencies:
   google_fonts: ^6.1.0
   permission_handler: ^11.3.0
   crop_image: ^1.0.12
+  screenshot: ^2.1.0
 
 dev_dependencies:
   flutter_test:

@@ -69,6 +69,9 @@ class _HomePageState extends State<HomePage> {
                 _bottomBarItem(Icons.crop_rotate, 'crop', onPress: () {
                   Navigator.pushNamed(context, AppRoutes.crop);
                 }),
+                _bottomBarItem(Icons.filter_frames_sharp, 'filters', onPress: () {
+                  Navigator.pushNamed(context, AppRoutes.filters);
+                }),
               ],
             ),
           ),
