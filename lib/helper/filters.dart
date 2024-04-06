@@ -1,4 +1,4 @@
-import 'package:luminarc/Models/filters.dart';
+import 'package:luminarc/Models/filter_model.dart';
 
 
 class Filters{

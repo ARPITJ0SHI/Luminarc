@@ -66,11 +66,15 @@ class _HomePageState extends State<HomePage> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                _bottomBarItem(Icons.crop_rotate, 'crop', onPress: () {
+                _bottomBarItem(Icons.crop_rotate, 'Crop', onPress: () {
                   Navigator.pushNamed(context, AppRoutes.crop);
                 }),
-                _bottomBarItem(Icons.filter_frames_sharp, 'filters', onPress: () {
+                _bottomBarItem(Icons.filter_frames_sharp, 'Filters',
+                    onPress: () {
                   Navigator.pushNamed(context, AppRoutes.filters);
+                }),
+                _bottomBarItem(Icons.tune, 'Adjust', onPress: () {
+                  Navigator.pushNamed(context, AppRoutes.adjust);
                 }),
               ],
             ),

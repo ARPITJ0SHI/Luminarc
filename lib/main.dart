@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:luminarc/Provider/imageProvider.dart';
 import 'package:luminarc/routes/Routes.dart';
+import 'package:luminarc/screens/adjust_screen.dart';
 
 import 'package:luminarc/screens/crop_screen.dart';
 import 'package:luminarc/screens/filter_screen.dart';
@@ -9,7 +10,6 @@ import 'package:luminarc/screens/homescreen.dart';
 import 'package:luminarc/screens/start_screen.dart';
 
 import 'package:provider/provider.dart';
-
 
 void main() {
   runApp(MultiProvider(providers: [
@@ -24,15 +24,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Luminarc',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+          sliderTheme:
+              SliderThemeData(showValueIndicator: ShowValueIndicator.always)),
       initialRoute: AppRoutes.startScreen,
       routes: {
         AppRoutes.home: (context) => HomePage(),
         AppRoutes.startScreen: (context) => StartScreen(),
-        AppRoutes.crop: (context)=> CropScreen(),
-        AppRoutes.filters: (context)=> FilterScreen()
+        AppRoutes.crop: (context) => CropScreen(),
+        AppRoutes.filters: (context) => FilterScreen(),
+        AppRoutes.adjust: (context) => AdjustScreen()
       },
     );
   }
