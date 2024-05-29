@@ -41,7 +41,12 @@ dependencies:
   permission_handler: ^11.3.0
   crop_image: ^1.0.12
   screenshot: ^2.1.0
+  text_editor: ^0.7.0
+  blur: ^3.1.0
+  pixel_color_picker: ^1.0.0
+  painter: ^2.0.0
   colorfilter_generator: ^0.0.8
+  flutter_colorpicker: ^1.0.3
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -80,15 +85,24 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
+  fonts:
+    - family: Anonymince Powerline
+      fonts:
+        - asset: fonts/Anonymince Powerline Bold.ttf
+        - asset: fonts/Anonymince Powerline Bold Italic.ttf
+        - asset: fonts/Anonymince Powerline Italic.ttf
+    - family: Arimo Bold for Powerline
+      fonts:
+        - asset: fonts/Arimo Bold for Powerline.ttf
+    - family: Cousine Bold for Powerline
+      fonts:
+        - asset: fonts/Cousine Bold for Powerline.ttf
+    - family: DejaVu Sans Mono Bold for Powerline
+      fonts:
+        - asset: fonts/DejaVu Sans Mono Bold for Powerline.ttf
+    - family: Droid Sans Mono Slashed for Powerline
+      fonts:
+        - asset: fonts/Droid Sans Mono Slashed for Powerline.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

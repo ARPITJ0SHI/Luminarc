@@ -76,6 +76,15 @@ class _HomePageState extends State<HomePage> {
                 _bottomBarItem(Icons.tune, 'Adjust', onPress: () {
                   Navigator.pushNamed(context, AppRoutes.adjust);
                 }),
+                _bottomBarItem(Icons.fit_screen_sharp, 'Fit', onPress: () {
+                  Navigator.pushNamed(context, AppRoutes.fit);
+                }),
+                _bottomBarItem(Icons.text_fields, 'Text', onPress: () {
+                  Navigator.pushNamed(context, AppRoutes.text);
+                }),
+                _bottomBarItem(Icons.draw_outlined, 'Draw', onPress: () {
+                  Navigator.pushNamed(context, AppRoutes.text);
+                }),
               ],
             ),
           ),

@@ -55,24 +55,22 @@ class _FilterScreenState extends State<FilterScreen> {
                 icon: const Icon(Icons.done))
           ],
         ),
-        body: Container(
-          child: Center(
-            child: Consumer<AppImageProvider>(
-              builder: (BuildContext context, value, child) {
-                if (value.currentImage != null) {
-                  return Screenshot(
-                    controller: screenshotController,
-                    child: ColorFiltered(
-                        colorFilter: ColorFilter.matrix(currentfilter.matrix),
-                        child: Image.memory(
-                          value.currentImage!,
-                          fit: BoxFit.cover,
-                        )),
-                  );
-                }
-                return const Center(child: CircularProgressIndicator());
-              },
-            ),
+        body: Center(
+          child: Consumer<AppImageProvider>(
+            builder: (BuildContext context, value, child) {
+              if (value.currentImage != null) {
+                return Screenshot(
+                  controller: screenshotController,
+                  child: ColorFiltered(
+                      colorFilter: ColorFilter.matrix(currentfilter.matrix),
+                      child: Image.memory(
+                        value.currentImage!,
+                        fit: BoxFit.cover,
+                      )),
+                );
+              }
+              return const Center(child: CircularProgressIndicator());
+            },
           ),
         ),
         bottomNavigationBar: Container(

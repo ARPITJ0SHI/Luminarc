@@ -4,4 +4,6 @@ class AppRoutes {
   static const String crop = '/crop';
   static const String filters = '/filters';
   static const String adjust = '/adjust';
+  static const String fit = '/fit';
+  static const String text = '/text';
 }
