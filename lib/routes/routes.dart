@@ -6,4 +6,7 @@ class AppRoutes {
   static const String adjust = '/adjust';
   static const String fit = '/fit';
   static const String text = '/text';
+  static const String tint = '/tint';
+  static const String blur = '/blur';
+  static const String sticker = '/sticker';
 }
