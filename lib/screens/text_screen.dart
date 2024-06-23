@@ -33,8 +33,9 @@ class _TextScreenState extends State<TextScreen> {
       children: [
         Scaffold(
           appBar: AppBar(
-            leading: const CloseButton(),
-            title: const Text('Text'),
+            backgroundColor: Colors.black87,
+            leading: const CloseButton(color: Colors.white),
+            title: const Text('Text',style: TextStyle(color: Colors.white),),
             actions: [
               IconButton(
                 onPressed: () async {
@@ -43,24 +44,27 @@ class _TextScreenState extends State<TextScreen> {
                   if (!mounted) return;
                   Navigator.of(context).pop();
                 },
-                icon: const Icon(Icons.done),
-              ) // _IconButton
+                icon: const Icon(Icons.done,color: Colors.white),
+              ) 
             ],
           ),
-          body: Center(
-            child: Consumer<AppImageProvider>(
-              builder: (BuildContext context, value, Widget? child) {
-                if (value.currentImage != null) {
-                  return LindiStickerWidget(
-                    controller: controller,
-                    child: Image.memory(value.currentImage!),
-                  ); // LindiStickerWidget
-                }
-                return const Center(
-                  child: CircularProgressIndicator(),
-                ); // Center
-              },
-            ), // Consumer
+          body: Container(
+            color: Colors.black87,
+            child: Center(
+              child: Consumer<AppImageProvider>(
+                builder: (BuildContext context, value, Widget? child) {
+                  if (value.currentImage != null) {
+                    return LindiStickerWidget(
+                      controller: controller,
+                      child: Image.memory(value.currentImage!),
+                    ); // LindiStickerWidget
+                  }
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  ); // Center
+                },
+              ), // Consumer
+            ),
           ),
           bottomNavigationBar: Container(
               width: double.infinity,

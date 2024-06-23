@@ -35,8 +35,9 @@ class _StickerScreenState extends State<StickerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const CloseButton(),
-        title: const Text('Sticker'),
+        backgroundColor: Colors.black87,
+        leading: const CloseButton(color: Colors.white),
+        title: const Text('Sticker',style: TextStyle(color: Colors.white),),
         actions: [
           IconButton(
             onPressed: () async {
@@ -44,31 +45,34 @@ class _StickerScreenState extends State<StickerScreen> {
               appImageProvider.changeImage(image!);
               Navigator.of(context).pop();
             },
-            icon: const Icon(Icons.done),
+            icon: const Icon(Icons.done,color: Colors.white),
           ),
         ],
       ),
-      body: Stack(
-        children: [
-          Center(
-            child: Consumer<AppImageProvider>(
-              builder: (BuildContext context, value, Widget? child) {
-                if (value.currentImage != null) {
-                  return LindiStickerWidget(
-                      controller: controller,
-                      child: Screenshot(
-                        controller: screenshotController,
-                        child: Image.memory(
-                          value.currentImage!,
-                          fit: BoxFit.cover,
-                        ),
-                      ));
-                }
-                return const Center(child: CircularProgressIndicator());
-              },
+      body: Container(
+        color: Colors.black87,
+        child: Stack(
+          children: [
+            Center(
+              child: Consumer<AppImageProvider>(
+                builder: (BuildContext context, value, Widget? child) {
+                  if (value.currentImage != null) {
+                    return LindiStickerWidget(
+                        controller: controller,
+                        child: Screenshot(
+                          controller: screenshotController,
+                          child: Image.memory(
+                            value.currentImage!,
+                            fit: BoxFit.cover,
+                          ),
+                        ));
+                  }
+                  return const Center(child: CircularProgressIndicator());
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       bottomNavigationBar: Container(
         width: double.infinity,

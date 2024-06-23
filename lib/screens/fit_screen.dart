@@ -69,8 +69,9 @@ class _FitScreenState extends State<FitScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        leading: const CloseButton(),
-        title: const Text('Fit'),
+        backgroundColor: Colors.black87,
+        leading: const CloseButton(color: Colors.white),
+        title: const Text('Fit',style: TextStyle(color: Colors.white),),
         actions: [
           IconButton(
             onPressed: () async {
@@ -80,7 +81,7 @@ class _FitScreenState extends State<FitScreen> {
                 Navigator.of(context).pop();
               }
             },
-            icon: const Icon(Icons.done),
+            icon: const Icon(Icons.done,color: Colors.white),
           )
         ],
       ),

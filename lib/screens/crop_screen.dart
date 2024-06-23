@@ -32,12 +32,13 @@ class _CropScreenState extends State<CropScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const CloseButton(),
-        title: const Text('Crop'),
+        backgroundColor: Colors.black87,
+        leading: const CloseButton(color: Colors.white),
+        title: const Text('Crop',style: TextStyle(color: Colors.white),),
         actions: [
           IconButton(
             onPressed: _cropAndSaveImage,
-            icon: const Icon(Icons.done),
+            icon: const Icon(Icons.done,color: Colors.white),
           ),
         ],
       ),

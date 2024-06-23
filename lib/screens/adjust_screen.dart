@@ -76,8 +76,9 @@ class _AdjustScreenState extends State<AdjustScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        leading: const CloseButton(),
-        title: const Text('Adjust'),
+        backgroundColor: Colors.black87,
+        leading: const CloseButton(color: Colors.white,),
+        title: const Text('Adjust',style: TextStyle(color: Colors.white),),
         actions: [
           IconButton(
             onPressed: () async {
@@ -85,7 +86,7 @@ class _AdjustScreenState extends State<AdjustScreen> {
               appImageProvider.changeImage(bytes!);
               Navigator.of(context).pop();
             },
-            icon: const Icon(Icons.done),
+            icon: const Icon(Icons.done,color: Colors.white,),
           ),
         ],
       ),

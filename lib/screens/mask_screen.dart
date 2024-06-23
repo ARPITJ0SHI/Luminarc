@@ -37,8 +37,9 @@ class _MaskScreenState extends State<MaskScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(    
-      leading: const CloseButton(),
-        title: const Text('Mask'),
+        backgroundColor: Colors.black87,
+      leading: const CloseButton(color: Colors.white),
+        title: const Text('Mask',style: TextStyle(color: Colors.white),),
         actions: [
           IconButton(
             onPressed: () async {
@@ -47,35 +48,38 @@ class _MaskScreenState extends State<MaskScreen> {
               if (!mounted) return;
               Navigator.of(context).pop();
             },
-            icon: const Icon(Icons.done),
+            icon: const Icon(Icons.done,color: Colors.white),
           ),
         ],
       ),
-      body:  Center(
-            child: Consumer<AppImageProvider>(
-              builder: (BuildContext context, value, Widget? child) {
-                if (value.currentImage != null) {
-                  currentImage = value.currentImage!;
-                  return Screenshot(
-                    controller: screenshotController,
-                    child: WidgetMask(
-                      childSaveLayer: true,
-                      blendMode:blendmode,
-                      mask:Stack(
-                      children: [
-                        Container(
-                          color: Colors.black.withOpacity(0.4),
-                        ), 
-                        GestureDetectorWidget (child: Icon(iconData, size: 250,color: Colors.white.withOpacity(opacity),))
-                      ],
-                    ),
-                  child: Image.memory(value.currentImage!))
-                  );
-                }
-                return const Center(child: CircularProgressIndicator());
-              },
+      body:  Container(
+        color: Colors.black87,
+        child: Center(
+              child: Consumer<AppImageProvider>(
+                builder: (BuildContext context, value, Widget? child) {
+                  if (value.currentImage != null) {
+                    currentImage = value.currentImage!;
+                    return Screenshot(
+                      controller: screenshotController,
+                      child: WidgetMask(
+                        childSaveLayer: true,
+                        blendMode:blendmode,
+                        mask:Stack(
+                        children: [
+                          Container(
+                            color: Colors.black.withOpacity(0.4),
+                          ), 
+                          GestureDetectorWidget (child: Icon(iconData, size: 250,color: Colors.white.withOpacity(opacity),))
+                        ],
+                      ),
+                    child: Image.memory(value.currentImage!))
+                    );
+                  }
+                  return const Center(child: CircularProgressIndicator());
+                },
+              ),
             ),
-          ),
+      ),
 
            bottomNavigationBar: Container(
         width: double.infinity,

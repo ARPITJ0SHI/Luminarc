@@ -37,8 +37,9 @@ class _FilterScreenState extends State<FilterScreen> {
     return Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
-          leading: const CloseButton(),
-          title: const Text('filters'),
+          backgroundColor: Colors.black87,
+          leading: const CloseButton(color: Colors.white),
+          title: const Text('filters',style: TextStyle(color: Colors.white),),
           actions: [
             IconButton(
                 onPressed: () async {
@@ -52,7 +53,7 @@ class _FilterScreenState extends State<FilterScreen> {
                   appImageProvider.changeImage(bytes!);
                   Navigator.of(context).pop();
                 },
-                icon: const Icon(Icons.done))
+                icon: const Icon(Icons.done,color: Colors.white))
           ],
         ),
         body: Center(

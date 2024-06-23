@@ -39,8 +39,9 @@ class _DrawScreenState extends State<DrawScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const CloseButton(),
-        title: const Text('Draw'),
+        backgroundColor: Colors.black87,
+        leading: const CloseButton(color: Colors.white),
+        title: const Text('Draw',style: TextStyle(color: Colors.white),),
         actions: [
           IconButton(
             onPressed: () async {
@@ -49,69 +50,72 @@ class _DrawScreenState extends State<DrawScreen> {
               if (!mounted) return;
               Navigator.of(context).pop();
             },
-            icon: const Icon(Icons.done),
+            icon: const Icon(Icons.done,color: Colors.white),
           ),
         ],
       ),
-      body: Stack(
-        children: [
-          Center(
-            child: Consumer<AppImageProvider>(
-              builder: (BuildContext context, value, Widget? child) {
-                if (value.currentImage != null) {
-                  currentImage = value.currentImage!;
-                  return Screenshot(
-                    controller: screenshotController,
-                    child: Stack(
-                      children: [
-                        Image.memory(value.currentImage!),
-                        Positioned.fill(child: Painter(_controller)),
-                      ],
-                    ),
-                  );
-                }
-                return const Center(child: CircularProgressIndicator());
-              },
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: 20,
-                        child: Center(
-                          child: Icon(
-                            Icons.circle,
-                            color: Colors.white,
-                            size: _controller.thickness + 3,
-                          ),
-                        ),
+      body: Container(
+        color: Colors.black87,
+        child: Stack(
+          children: [
+            Center(
+              child: Consumer<AppImageProvider>(
+                builder: (BuildContext context, value, Widget? child) {
+                  if (value.currentImage != null) {
+                    currentImage = value.currentImage!;
+                    return Screenshot(
+                      controller: screenshotController,
+                      child: Stack(
+                        children: [
+                          Image.memory(value.currentImage!),
+                          Positioned.fill(child: Painter(_controller)),
+                        ],
                       ),
-                      Expanded(
-                        child: Slider(
-                          value: _controller.thickness,
-                          onChanged: (value) {
-                            setState(() {
-                              _controller.thickness = value;
-                            });
-                          },
-                          min: 1.0,
-                          max: 20.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                    );
+                  }
+                  return const Center(child: CircularProgressIndicator());
+                },
               ),
             ),
-          ),
-        ],
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 20,
+                          child: Center(
+                            child: Icon(
+                              Icons.circle,
+                              color: Colors.white,
+                              size: _controller.thickness + 3,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Slider(
+                            value: _controller.thickness,
+                            onChanged: (value) {
+                              setState(() {
+                                _controller.thickness = value;
+                              });
+                            },
+                            min: 1.0,
+                            max: 20.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: Container(
         height: 80,
