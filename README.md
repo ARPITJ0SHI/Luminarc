@@ -1,6 +1,6 @@
 # luminarc
 
-A new Flutter project.
+A new Flutter project that will enable a user to modifiy and edit images from gallery and camera with various different options and features to choose from, also integrating AI to help in making desired changes to the image as per user requriement.
 
 ## Getting Started
 
