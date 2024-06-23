@@ -11,6 +11,7 @@ import 'package:luminarc/screens/filter_screen.dart';
 import 'package:luminarc/screens/fit_screen.dart';
 
 import 'package:luminarc/screens/homescreen.dart';
+import 'package:luminarc/screens/mask_screen.dart';
 import 'package:luminarc/screens/start_screen.dart';
 import 'package:luminarc/screens/sticker_screen.dart';
 import 'package:luminarc/screens/tint_screen.dart';
@@ -47,11 +48,10 @@ class MyApp extends StatelessWidget {
         AppRoutes.tint: (context) => const TintScreen(),
         AppRoutes.blur : (context) => const BlurScreen(),
         AppRoutes.sticker : (context) => const StickerScreen(),
-        // AppRoutes.crop: (context) => const CropScreen(),
-        
         AppRoutes.fit: (context) => const FitScreen(),
         AppRoutes.text: (context) => const TextScreen(),
-        AppRoutes.draw: (context) => const DrawScreen()
+        AppRoutes.draw: (context) => const DrawScreen(),
+        AppRoutes.mask: (context) => const MaskScreen()
       },
     );
   }

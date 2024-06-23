@@ -10,4 +10,5 @@ class AppRoutes {
   static const String draw = '/draw';
   static const String blur = '/blur';
   static const String sticker = '/sticker';
+  static const String mask = '/Mask';
 }

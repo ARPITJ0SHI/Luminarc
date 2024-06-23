@@ -96,6 +96,10 @@ class _HomePageState extends State<HomePage> {
                     onPress: () {
                   Navigator.pushNamed(context, AppRoutes.sticker);
                 }),
+                _bottomBarItem(Icons.star_border, 'Mask',
+                    onPress: () {
+                  Navigator.pushNamed(context, AppRoutes.mask);
+                }),
               ],
             ),
           ),
