@@ -5,60 +5,63 @@ import 'package:pixel_color_picker/pixel_color_picker.dart';
 class PixelColorImage extends StatefulWidget {
   @override
   _PixelColorImageState createState() => _PixelColorImageState();
-}
 
-class _PixelColorImageState extends State<PixelColorImage> {
-  showBuildContext(context, {Color? backgroundColor,Uint8List? image,onPick}) {
-    return showDialog(
+  void show(BuildContext context, {Color? backgroundColor, Uint8List? image, Function(Color)? onPick}) {
+    showDialog(
       context: context,
       builder: (BuildContext context) {
-        Color tempColor = backgroundColor!;
+        Color tempColor = backgroundColor ?? Colors.transparent;
         return StatefulBuilder(
           builder: (context, setState) {
             return AlertDialog(
-          
               title: const Text("Move your finger"),
               content: Column(
-                mainAxisSize:  MainAxisSize.min,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  PixelColorPicker(child: Image.memory(image!), onChanged:(color){
-                    setState((){
-                      tempColor=color;
-                    });
-                  }
+                  PixelColorPicker(
+                    child: image != null ? Image.memory(image) : Container(),
+                    onChanged: (color) {
+                      setState(() {
+                        tempColor = color;
+                      });
+                    },
                   ),
-                  const SizedBox(height: 10,),
+                  const SizedBox(height: 10),
                   Container(
                     width: double.infinity,
                     height: 80,
                     color: tempColor,
                   ),
-
                 ],
               ),
-              
               actions: [
-                TextButton(onPressed: (){
-              Navigator.of(context).pop;
-              },
-               child: const Text('Cancel')),
-                TextButton(onPressed: (){
-              onPick(tempColor);
-              Navigator.of(context).pop;
-              },
-               child: const Text('Pick'))
-               
-               ],
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Cancel'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    if (onPick != null) {
+                      onPick(tempColor);
+                    }
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Pick'),
+                ),
+              ],
             );
-          }
+          },
         );
-      }
+      },
     );
   }
-  
+}
+
+class _PixelColorImageState extends State<PixelColorImage> {
   @override
-  Widget build(Object context) {
-    // TODO: implement build
-    throw UnimplementedError();
+  Widget build(BuildContext context) {
+    return Container(); // Dummy build method
   }
 }

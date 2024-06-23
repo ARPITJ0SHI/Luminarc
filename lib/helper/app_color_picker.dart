@@ -1,43 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
-class ColorPickerDialog extends StatefulWidget {
+class AppColorPicker extends StatefulWidget {
   @override
-  _ColorPickerDialogState createState() => _ColorPickerDialogState();
-}
+  _AppColorPickerState createState() => _AppColorPickerState();
 
-class _ColorPickerDialogState extends State<ColorPickerDialog> {
-  Color? currentColor; // Define currentColor variable
-  Color? pickerColor; // Define pickerColor variable
-
-  void show(BuildContext context, {Color? backgroundColor, onPick}) {
+  void show(BuildContext context, {Color? backgroundColor, Function(Color)? onPick}) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        pickerColor = backgroundColor; // Assign backgroundColor to pickerColor
+        Color pickerColor = backgroundColor ?? Colors.transparent;
         return AlertDialog(
           title: const Text('Pick a color'),
           content: SingleChildScrollView(
             child: ColorPicker(
-              pickerColor: backgroundColor ?? Colors.transparent, // Use backgroundColor if provided, else use transparent
+              pickerColor: pickerColor,
               onColorChanged: (color) {
-                setState(() {
-                  pickerColor = color;
-                });
+                pickerColor = color;
               },
-              showLabel: true, // Show color value labels
+              showLabel: true,
             ),
           ),
           actions: <Widget>[
             ElevatedButton(
               child: const Text('Got it'),
               onPressed: () {
-                setState(() {
-                  currentColor = pickerColor;
-                });
                 Navigator.of(context).pop();
                 if (onPick != null) {
-                  onPick(currentColor); // Call onPick callback with selected color
+                  onPick(pickerColor);
                 }
               },
             ),
@@ -46,10 +36,11 @@ class _ColorPickerDialogState extends State<ColorPickerDialog> {
       },
     );
   }
+}
 
+class _AppColorPickerState extends State<AppColorPicker> {
   @override
   Widget build(BuildContext context) {
-    // This method is not used in this example. You can remove it.
-    throw UnimplementedError();
+    return Container(); // Dummy build method
   }
 }

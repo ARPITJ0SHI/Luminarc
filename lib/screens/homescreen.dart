@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                   Navigator.pushNamed(context, AppRoutes.text);
                 }),
                 _bottomBarItem(Icons.draw_outlined, 'Draw', onPress: () {
-                  Navigator.pushNamed(context, AppRoutes.text);
+                  Navigator.pushNamed(context, AppRoutes.draw);
                 }),
                 _bottomBarItem(Icons.border_color_outlined, 'Tint',
                     onPress: () {
